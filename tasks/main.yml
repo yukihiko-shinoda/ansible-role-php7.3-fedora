@@ -1,0 +1,21 @@
+---
+- include_tasks: install_php_from_ius.yml
+
+- name: download installation shell for composer
+  uri:
+    url: https://raw.githubusercontent.com/composer/getcomposer.org/1b137f8bf6db3e79a38a5bc45324414a6b1f9df2/web/installer
+    dest: /tmp/install_composer.php
+    creates: /tmp/install_composer.php
+
+- name: install composer
+  command: php /tmp/install_composer.php --install-dir=/usr/local/bin --filename=composer
+  args:
+    creates: /usr/local/bin/composer
+
+- name: set symlink for composer
+  file:
+    path: /usr/bin/composer
+    state: link
+    src: /usr/local/bin/composer
+    owner: root
+    group: root

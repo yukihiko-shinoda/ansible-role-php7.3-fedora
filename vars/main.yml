@@ -1,0 +1,18 @@
+---
+php_7_3_library_heroku:
+# Require to install specification of Heroku by yum
+  - php73-common
+  - php73-bcmath
+  - php73-mbstring
+# Specification of Heroku
+  - php73-json
+  - php73-cli
+  - php73-fpm
+  - php73-mysqlnd
+  - php73-opcache
+  - php73-pgsql
+  - php73-xml
+  - php73-pecl-apcu
+  - php73-pecl-redis
+# For development
+  - php73-pecl-xdebug

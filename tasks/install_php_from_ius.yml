@@ -1,0 +1,48 @@
+---
+- name: install dependency of php to disable amzn2-core repository when install php
+  yum:
+    name:
+      - libpng-devel
+      - libxslt-devel
+#      - compat-gmp4
+      - libjpeg-devel
+      - libtidy-devel
+      - freetype-devel
+      - libXpm
+      - krb5-devel
+      - postgresql-libs
+      - libedit
+      - ncurses-compat-libs
+
+- name: install openssl-devel to enable OpenSSL on php
+  yum:
+    name: openssl-devel
+
+- name: install php
+  yum:
+    name: '{{ php_7_3_library_heroku }}'
+    disablerepo: amzn2-core
+
+- name: install epel yum repository to install php gettext module
+  yum:
+    name: epel-release
+
+- name: install php
+  yum:
+    name: php-php-gettext
+    enablerepo: epel
+    disablerepo: amzn2-core
+
+- name: enable service on boot (excluding case when docker container)
+  service:
+    name: php-fpm
+    enabled: "{{ 'no' if 'container' in group_names else 'yes' }}"
+  when: ansible_distribution == 'Amazon' and ansible_service_mgr == 'upstart' or ansible_distribution == 'CentOS' and ansible_distribution_major_version == '6'
+
+- name: set config file for Apache
+  template:
+    src: php-fpm.conf.j2
+    dest: /etc/httpd/conf.d/php-fpm.conf
+    owner: root
+    group: root
+    mode: 0644
