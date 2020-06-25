@@ -1,18 +1,69 @@
 ---
 php_7_3_library_heroku:
 # Require to install specification of Heroku by yum
-  - php73-common
-  - php73-bcmath
-  - php73-mbstring
+  - php73-common # Common files for PHP
+  - php73-bcmath  # A module for PHP applications for using the bcmath library
+  - php73-mbstring # A module for PHP applications which need multi-byte string handling
+  - php73-cli # To install Composer
+# PHP default
+  - php73-json # JavaScript Object Notation extension for PHP
+  - php73-pdo # A database access abstraction module for PHP applications
 # Specification of Heroku
-  - php73-json
-  - php73-cli
-  - php73-fpm
-  - php73-mysqlnd
-  - php73-opcache
-  - php73-pgsql
-  - php73-xml
-  - php73-pecl-apcu
-  - php73-pecl-redis
+  - php73-fpm # PHP FastCGI Process Manager
+  - php73-fpm-httpd.noarch # Apache HTTP Server configuration for PHP-FPM
+  - php73-mysqlnd # A module for PHP applications that use MySQL databases
+  - php73-opcache # The Zend OPcache
+  - php73-pgsql # A PostgreSQL database module for PHP
+# Specification of Heroku shared
+  - php73-gd # A module for PHP applications for using the gd graphics library
+  - php73-gmp # A module for PHP applications for using the GNU MP library
+  - php73-imap # A module for PHP applications that use IMAP
+  # Error: Package: php73-intl-7.3.18-2.el7.ius.x86_64 (ius)
+  # Requires: libicudata.so.50()(64bit)
+  # Error: Package: php73-intl-7.3.18-2.el7.ius.x86_64 (ius)
+  # Requires: libicui18n.so.50()(64bit)
+  # Error: Package: php73-intl-7.3.18-2.el7.ius.x86_64 (ius)
+  # Requires: libicuuc.so.50()(64bit)
+  # Error: Package: php73-intl-7.3.18-2.el7.ius.x86_64 (ius)
+  # Requires: libicuio.so.50()(64bit)
+  # - php73-intl # Internationalization extension for PHP applications
+  - php73-ldap # A module for PHP applications that use LDAP
+  - php73-soap # A module for PHP applications that use the SOAP protocol
+  - php73-sodium # Wrapper for the Sodium cryptographic library
+  - php73-xml # A module for PHP applications which use XML
+  - php73-xmlrpc # A module for PHP applications which use the XML-RPC protocol
+# Specification of Heroku third-party extensions
+  # Error: Package: php73-pecl-amqp-1.9.4-3.el7.ius.x86_64 (ius)
+  # Requires: librabbitmq.so.4()(64bit)
+  # - php73-pecl-amqp # Communicate with any AMQP compliant server
+  - php73-pecl-apcu # APC User Cache
+  # Error: Package: php73-devel-7.3.18-2.el7.ius.x86_64 (ius)
+  # Requires: automake
+  # Error: Package: php73-devel-7.3.18-2.el7.ius.x86_64 (ius)
+  # Requires: gcc-c++
+  # Error: Package: php73-devel-7.3.18-2.el7.ius.x86_64 (ius)
+  # Requires: libedit-devel(x86-64)
+  # Error: Package: php73-devel-7.3.18-2.el7.ius.x86_64 (ius)
+  # Requires: autoconf
+  # Error: Package: php73-devel-7.3.18-2.el7.ius.x86_64 (ius)
+  # Requires: libtool
+  # - php73-pecl-apcu-devel # APCu developer files (header)
+  # Error: Package: php73-pecl-imagick-3.4.4-3.el7.ius.x86_64 (ius)
+  # Requires: libMagickCore-6.Q16.so.6()(64bit)
+  # Error: Package: php73-pecl-imagick-3.4.4-3.el7.ius.x86_64 (ius)
+  # Requires: libMagickWand-6.Q16.so.6()(64bit)
+  # - php73-pecl-imagick # Provides a wrapper to the ImageMagick library
+  # - php73-pecl-imagick-devel # imagick extension developer files (header)
+  # Error: Package: php73-pecl-memcached-3.1.4-1.el7.ius.x86_64 (ius)
+  # Requires: libmemcachedprotocol.so.0()(64bit)
+  # Error: Package: php73-pecl-memcached-3.1.4-1.el7.ius.x86_64 (ius)
+  # Requires: libmemcached.so.11()(64bit)
+  # Error: Package: php73-pecl-memcached-3.1.4-1.el7.ius.x86_64 (ius)
+  # Requires: libevent-2.0.so.5()(64bit)
+  # Error: Package: php73-pecl-memcached-3.1.4-1.el7.ius.x86_64 (ius)
+  # Requires: libmemcachedutil.so.2()(64bit)
+  # - php73-pecl-memcached # Extension to work with the Memcached caching daemon
+  - php73-pecl-mongodb # MongoDB driver for PHP
+  - php73-pecl-redis # Extension for communicating with the Redis key-value store
 # For development
-  - php73-pecl-xdebug
+  - php73-pecl-xdebug # PECL package for debugging PHP scripts

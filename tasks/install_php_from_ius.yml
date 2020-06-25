@@ -13,10 +13,8 @@
       - postgresql-libs
       - libedit
       - ncurses-compat-libs
-
-- name: install openssl-devel to enable OpenSSL on php
-  yum:
-    name: openssl-devel
+      - openssl-devel # To enable OpenSSL on php
+      - libwebp # To enable php-gd on php
 
 - name: install php
   yum:
